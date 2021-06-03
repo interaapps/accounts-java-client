@@ -1,5 +1,13 @@
 # Accounts Java Client
 
+## Installation
+```xml
+<dependency>
+    <groupId>com.github.interaapps</groupId>
+    <artifactId>accounts-java-client</artifactId>
+    <version>1.0 <!-- Current release Tag --></version>
+</dependency>
+```
 ## Normal usage
 ```java
 import de.interaapps.accounts.apiclient.AccountsClient;

@@ -35,11 +35,11 @@ import de.interaapps.accounts.apiclient.responses.oauth2.OAuth2TokenExchangeResp
 
 class OAuth2Example {
     public static void main(String[] args) {
-        OAuth2Client oAuth2Client = new OAuth2Client("CLIENT_ID", "CLIENT_SECRET");
-
+        OAuth2Client oAuth2Client = new OAuth2Client("CLIENT_ID", "CLIENT_SECRET")
+                .addScopes("user.description:read");
+        
         // Send user to this url
         String url = oAuth2Client.createAuthorizationURL()
-                .addScopes("user.description:read")
                 .setRedirectUrl("https://myapp/authentication/interaapps")
                 .build();
 

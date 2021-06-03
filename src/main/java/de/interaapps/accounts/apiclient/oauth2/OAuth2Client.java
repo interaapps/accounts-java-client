@@ -35,6 +35,11 @@ public class OAuth2Client extends HTTPClient {
         return true;
     }
 
+    public OAuth2Client addScopes(String ...scope){
+        scopes.addAll(Arrays.asList(scope));
+        return this;
+    }
+
     public boolean checkScopes(AuthorizationURLBuilder urlBuilder, List<String> scopes){
         for (String scope : urlBuilder.getScopes()) {
             if (!scopes.contains(scope))

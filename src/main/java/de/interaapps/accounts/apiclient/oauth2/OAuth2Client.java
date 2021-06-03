@@ -73,6 +73,14 @@ public class OAuth2Client extends HTTPClient {
             return this;
         }
 
+        public AuthorizationURLBuilder setRedirectUrl(String redirectUrl) {
+            this.redirectUrl = redirectUrl;
+            return this;
+        }
+        public AuthorizationURLBuilder setState(String state) {
+            this.state = state;
+            return this;
+        }
         public List<String> getScopes() {
             return scopes;
         }

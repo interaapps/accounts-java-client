@@ -1,0 +1,62 @@
+# NOTE: Those requests could change every day because of some added security features or other reasons.
+
+### Register a user
+POST https://accounts.interaapps.de/api/v2/auth/register
+Authorization: Bearer {{authkey}}
+Content-Type: application/json
+
+{
+  "name": "{{name}}",
+  "password": "{{password}}",
+  "mail": "{{email}}",
+  "privacy_policies_accepted": false,
+  "profile_picture": ""
+}
+
+### Preview a user by username
+GET https://accounts.interaapps.de/api/v2/auth/user_preview?name=TestNutzer
+Authorization: Bearer {{authkey}}
+
+### Login into a user
+POST https://accounts.interaapps.de/api/v2/auth/login
+Authorization: Bearer {{authkey}}
+Content-Type: application/json
+
+{
+  "name": "{{name}}",
+  "password": "{{password}}"
+}
+
+
+### Verify E-Mail
+GET https://accounts.interaapps.de/api/v2/auth/verify_mail/{key}
+Authorization: Bearer {{authkey}}
+
+### OAuth2-Login callback
+GET https://accounts.interaapps.de/api/v2/auth/oauthlogin/GOOGLE?code=123
+Authorization: Bearer {{authkey}}
+
+### Auth-Verify (2FA, etc.)
+POST https://accounts.interaapps.de/api/v2/authentication_methods/verify/{type}
+Authorization: Bearer {{authkey}}
+Content-Type: application/json
+
+{
+  "code": "123546"
+}
+
+### Get Authentication-Methods
+GET https://accounts.interaapps.de/api/v2/authentication_methods
+Authorization: Bearer {{authkey}}
+Content-Type: application/json
+
+### Add/Update Authentication-Method
+PUT https://accounts.interaapps.de/api/v2/authentication_methods/method/{type}
+Authorization: Bearer {{authkey}}
+Content-Type: application/json
+
+{}
+
+### Remove Authentication-Method
+DELETE https://accounts.interaapps.de/api/v2/authentication_methods/method/{type}
+Authorization: Bearer {{authkey}}

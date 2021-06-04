@@ -1,0 +1,10 @@
+### Get the users projects
+# Permission: developers.projects:read
+GET https://accounts.interaapps.de/api/v2/projects
+Authorization: Bearer {{authkey}}
+
+### Get a project
+# Permission: developers.projects:read
+GET https://accounts.interaapps.de/api/v2/projects/{project_id}
+Authorization: Bearer {{authkey}}
+

@@ -1,0 +1,37 @@
+### Getting contacts
+
+# contacts.accepted:read
+GET https://accounts.interaapps.de/api/v2/contacts
+Authorization: Bearer {{authkey}}
+
+### Get Contact by userId. (Usualy for cheking if contacted)
+# contacts.accepted:read
+GET https://accounts.interaapps.de/api/v2/contacts/405
+Authorization: Bearer {{authkey}}
+
+### Deleting contact
+# contacts:delete
+DELETE https://accounts.interaapps.de/api/v2/contacts/requests/{i+:id}
+Authorization: Bearer {{authkey}}
+
+### Getting contact-requests
+# contacts.incoming:read
+GET https://accounts.interaapps.de/api/v2/contacts/requests
+Authorization: Bearer {{authkey}}
+
+
+### Accepting contact-request
+# contacts.incoming:accept
+GET https://accounts.interaapps.de/api/v2/contacts/requests/{i+:id}/accept
+Authorization: Bearer {{authkey}}
+
+
+### Create contact-request
+# contacts.incoming:read
+POST https://accounts.interaapps.de/api/v2/contacts
+Authorization: Bearer {{authkey}}
+Content-Type: application/json
+
+{
+    "name": "NAME"
+}

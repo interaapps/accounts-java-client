@@ -1,0 +1,11 @@
+### Getting auth-keys
+# Permission: authkeys:read
+GET https://accounts.interaapps.de/api/v2/authkeys
+# ?filter=LOGIN // Show only LOGIN Access-Tokens and not OAuth2 tokens or other
+Authorization: Bearer {{authkey}}
+
+
+### Delete auth-key
+# Permission: authkeys:delete
+DELETE https://accounts.interaapps.de/api/v2/authkeys/{authkey}
+Authorization: Bearer {{authkey}}

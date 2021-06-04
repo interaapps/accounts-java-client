@@ -1,0 +1,47 @@
+# IAAuth is not available for other projects. It's just an old internal authorization standard. Use OAuth2.
+
+###### Frontend
+
+### Get authorized IAAuth Apps
+GET https://accounts.interaapps.de/api/v2/iaauth/authorized_apps
+Authorization: Bearer {{authkey}}
+
+### Get IAAuth App
+GET https://accounts.interaapps.de/api/v2/iaauth/app/4
+Authorization: Bearer {{authkey}}
+
+
+### Granting IAAuth App
+GET https://accounts.interaapps.de/api/v2/iaauth/app/4/grant
+Authorization: Bearer {{authkey}}
+
+## App
+
+### Getting user information
+POST https://accounts.interaapps.de/iaauth/api/getuserinformation
+Content-Type: application/json
+
+{
+   "key": "{{iaauth_key}}",
+   "userkey": "{{iaauth_userkey}}"
+}
+
+### Check if someone is friend
+POST https://accounts.interaapps.de/iaauth/api/friends/isfriend
+Content-Type: application/json
+
+{
+   "key": "{{iaauth_key}}",
+   "userkey": "{{iaauth_userkey}}",
+   "name": "{{iaauth_friend}}"
+}
+
+### Find user
+POST https://accounts.interaapps.de/iaauth/api/finduser
+Content-Type: application/json
+
+{
+   "key": "{{iaauth_key}}",
+   "userkey": "{{iaauth_userkey}}",
+   "query": "[[\"name\", \"LIKE\", \"%J%\"]]"
+}

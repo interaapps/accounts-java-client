@@ -1,0 +1,37 @@
+### Get user information (https://developers.interaapps.de/docs/accounts/getting-user-information)
+# Permission: user:read
+GET https://accounts.interaapps.de/api/v2/user
+Authorization: Bearer {{authkey}}
+
+### Set some user information (https://developers.interaapps.de/docs/accounts/writing-user-information)
+# Permission: user:write
+PUT https://accounts.interaapps.de/api/v2/user
+Authorization: Bearer {{authkey}}
+Content-Type: application/json
+
+{
+    "description": "Loving chicken-wings! From api3"
+}
+
+### Set some user information with custom content-types (https://developers.interaapps.de/docs/accounts/writing-user-information)
+# Just set Accept (For response) or Content-Type (For Request contents) to application/json, application/x-yaml or application/x-www-form-urlencoded
+PUT https://accounts.interaapps.de/api/v2/user
+Authorization: Bearer {{authkey}}
+Content-Type: application/x-yaml
+Accept: application/x-www-form-urlencoded
+
+description: "Loving chicken-wings! From api3"
+
+
+### Set profile picture
+# user.profilepicture:edit
+PUT https://accounts.interaapps.de/api/v2/user/profile_picture
+Authorization: Bearer {{authkey}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="image.png"
+Content-Type: image/png
+
+< ./example.png
+--WebAppBoundary--

@@ -1,0 +1,40 @@
+# Read more at https://developers.interaapps.de/docs/accounts/oauth2
+
+######## For the Account frontend
+
+### Get authorized OAuth2 Apps
+# user.oauth.apps:read
+GET https://accounts.interaapps.de/api/v2/authorization/oauth2/authorized_apps
+Authorization: Bearer {{authkey}}
+
+### Get OAuth2 App
+GET https://accounts.interaapps.de/api/v2/authorization/oauth2/apps/jc2l1yl7cg9t2im
+Authorization: Bearer {{authkey}}
+
+### Granting OAauth2 app access to scopes
+# user.oauth.apps:grant
+GET https://accounts.interaapps.de/api/v2/authorization/oauth2/apps/jc2l1yl7cg9t2im/grant?scope=user
+Authorization: Bearer {{authkey}}
+
+> {% client.global.set("oauth2_code", response.body.json.code); %}
+
+
+######## For Apps
+
+### Receiving Access-Token
+POST https://accounts.interaapps.de/api/v2/authorization/oauth2/access_token
+Content-Type: application/json
+
+{
+    "client_id": "{{oauth2_client_id}}",
+    "client_secret": "{{oauth2_client_secret}}",
+    "code": "{{oauth2_code}}"
+}
+
+> {% client.global.set("oauth2_access_token", response.body.json.access_token); %}
+
+### Getting user information of granted OAuth2 App
+GET https://accounts.interaapps.de/api/v2/user
+Authorization: Bearer {{oauth2_access_token}}
+
+

@@ -110,7 +110,7 @@ public class OAuth2Client extends HTTPClient {
                     +"/auth/oauth2"
                     +"?client_id="+encodeUrl(clientId)
                     +"&scope="+encodeUrl(String.join(" ", scopes))
-                    +(redirectUri == null ? "" : "&redirect_url="+encodeUrl(redirectUri))
+                    +(redirectUri == null ? "" : "&redirect_uri="+encodeUrl(redirectUri))
                     +(state == null ? "" : "&state="+encodeUrl(state));
         }
     }

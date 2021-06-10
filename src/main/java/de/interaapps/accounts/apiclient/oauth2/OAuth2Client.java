@@ -61,7 +61,7 @@ public class OAuth2Client extends HTTPClient {
     }
 
     public static class AuthorizationURLBuilder {
-        private String redirectUrl;
+        private String redirectUri;
         private String state;
         private List<String> scopes = new ArrayList<>();
 
@@ -79,7 +79,7 @@ public class OAuth2Client extends HTTPClient {
         }
 
         public AuthorizationURLBuilder setRedirectUrl(String redirectUrl) {
-            this.redirectUrl = redirectUrl;
+            this.redirectUri = redirectUrl;
             return this;
         }
         public AuthorizationURLBuilder setState(String state) {
@@ -93,7 +93,7 @@ public class OAuth2Client extends HTTPClient {
             return state;
         }
         public String getRedirectUrl() {
-            return redirectUrl;
+            return redirectUri;
         }
 
         private String encodeUrl(String component){
@@ -110,7 +110,7 @@ public class OAuth2Client extends HTTPClient {
                     +"/auth/oauth2"
                     +"?client_id="+encodeUrl(clientId)
                     +"&scope="+encodeUrl(String.join(" ", scopes))
-                    +(redirectUrl == null ? "" : "&redirect_url="+encodeUrl(redirectUrl))
+                    +(redirectUri == null ? "" : "&redirect_url="+encodeUrl(redirectUri))
                     +(state == null ? "" : "&state="+encodeUrl(state));
         }
     }

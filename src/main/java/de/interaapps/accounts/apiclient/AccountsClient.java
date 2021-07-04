@@ -106,6 +106,10 @@ public class AccountsClient extends HTTPClient {
         return response;
     }
 
+    public ExternalResourcesResponse getExternalKey(String appId){
+        return post("/api/v2/oauth2/external/"+appId).object(ExternalResourcesResponse.class);
+    }
+
     public IAAuthServicePermissionGrantResponse grantIAAuthApp(String id){
         IAAuthServicePermissionGrantResponse response = null;
         try {

@@ -2,6 +2,9 @@ package de.interaapps.accounts.apiclient.oauth2;
 
 import de.interaapps.accounts.apiclient.AccountsClient;
 import de.interaapps.accounts.apiclient.requests.oauth2.OAuth2AccessTokenRequest;
+import de.interaapps.accounts.apiclient.requests.oauth2.OAuth2SetEASRequest;
+import de.interaapps.accounts.apiclient.responses.ActionResponse;
+import de.interaapps.accounts.apiclient.responses.oauth2.ExternalResourcesResponse;
 import de.interaapps.accounts.apiclient.responses.oauth2.OAuth2TokenExchangeResponse;
 import org.javawebstack.httpclient.HTTPClient;
 
@@ -10,7 +13,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OAuth2Client extends HTTPClient {
     private final String clientId;
@@ -46,6 +48,14 @@ public class OAuth2Client extends HTTPClient {
                 return false;
         }
         return true;
+    }
+
+    public ActionResponse setExternalAccessURL(String url){
+        OAuth2SetEASRequest request = new OAuth2SetEASRequest();
+        request.clientId = clientId;
+        request.clientSecret = secret;
+        request.url = url;
+        return post("/api/v2/oauth2/external").jsonBody(request).object(ActionResponse.class);
     }
 
     public OAuth2TokenExchangeResponse exchangeToken(String code){
